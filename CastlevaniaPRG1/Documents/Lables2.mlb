@@ -1,0 +1,138 @@
+﻿R:0004:RNG:Changes seemingly randomly.
+R:0007:TitleBat:May be used by something else.
+R:0018:Mode:$01 = Title Screen\n$02 = Demo\n$04 = Intro Animation\n$05 = Playing\n$06 = Dead\n$08 = Door Animation\n$0A = Entering Castle Animation\n$0C = Crystal ball\n$0D = Game Over\n\n$0F = End Credits
+R:0019:SubMode:The values vary with mode.
+R:001A:Timer:Increments by 1 each frame. Resets each time you "change stage?"
+R:001E:TitleScreenTimerTileDemo:Counts slowly (each 8 frames) up to $11 (until castle bat becomes close),\nthen (each frame) down from $FF to $00.
+R:0022:Paused:$01 = yes, $00 = no
+R:0028:CurrentStage
+R:002A:NumberOfLives
+R:002B:FullGameLoops:$00 = Normal Mode (first game loop), $01 and above = Difficult Mode
+R:002E:CameraXpos
+R:003E:OnStairs:$00 = yes, $01 = no
+R:003F:SimonsYpos
+R:0040:SimonsXpos
+R:0041:Timer__XX
+R:0042:TimerXX__
+R:0044:LifeMeterHUD:2 bars = +$08, Max = $40(64)
+R:0045:LifeMeterCurrent:2 bars = +$08, Max = $40(64)
+R:0046:SubStage:Either $00 or $01 since each stage has at most 2 substages
+R:005C:HitIndicatorMaybe
+R:005F:SimonStateKneeling:$00 = standing, $01 = kneeling
+R:0064:SubweaponMulti:$00 = single shot, $01 = double shot, $02 = triple shot
+R:0070:WhipLength:Set to $00, $01, or $02.
+R:0071:Hearts:$00 to $63 (99 in decimal).
+R:0080:Pulse1Channel:0x008X
+R:0090:Pulse2Channel:0x009X
+R:00A0:TriangleChannel:0x00AX
+R:00B0:NoiseChannel:0x00BX
+R:00B4:SoundInstrumentEffectsMaybe:$38 Screen flicker
+R:00E0:SoundEffect_Donno
+R:00F7:Player1Controller
+R:00FD:ScreenPositionX_00XX
+R:00FE:ScreenColorMode:??\nFirst digit is for Sprites\nSecondTiles
+R:00FF:ScreenPositionX_XX00
+R:0141:FlashTimerSubweaponMultiplayer
+R:0142:SpecialIteamTrigerValuesMAybe:$A0 = ??\n$B0 = ??\n$02\n$03
+R:0144:SpecialIteamTrigger:$00 Hidden and can be used\n$01 Triggered Can't be used again
+R:0145:SpecialItemTriggerCountdown:$40 = Will Appear
+R:0146:SpecialItemDonno1:$3??
+R:0148:SpecialItemDonno2:$01??
+R:0159:SimonCurrentSpriteAssembly:$00=standing,\n$01-03 = walk,\n$04 = jump and crouch,\n$05-07 = whip/sub-weapon,\n$0D-0E = walk up stairs,\n$0F-10 = walk down stairs,\n$12 = hurt\n$1C = dead\n$1D = collapsing
+R:015B:Subweapon:$00 = no subweapon\n$08 = Dagger\n$09 = Boomerang\n$0B = Holy Water\n$0D = Axe\n$0F = Stopwatch
+R:0160:SimonScreenPositionInRoom1
+R:0162:SimonScreenPositionInRoom2
+R:0354:SimonsYposScreen
+R:038C:SimonsXposScreen
+R:0390:Enemy0_Xpos
+R:0391:Enemy1_Xpos
+R:0392:Enemy2_Xpos
+R:0393:Boss_Xpos
+R:0395:BatMedusa0_Xpos
+R:0396:BatMedusa1_Xpos
+R:0397:BatMedusa2_Xpos:Drac's Top Fireball's
+R:0398:BatMedusa3_Xpos:Drac's Middle Fireball's 
+R:0399:BatMedusa4_Xpos:Drac's Bottom 
+R:03A0:Subweapon1Xpos
+R:03A1:Subweapon2Xpos
+R:03A2:Subweapon3Xpos
+R:03A3:Platform1Xpos
+R:03A4:Platform2Xpos
+R:03F8:SpecialItemYpos0
+R:03F9:SpecialItemYpos1
+R:03FA:SpecialItemYpos3
+R:0430:IteamYpos0
+R:0431:IteamYpos1
+R:0432:IteamYpos3
+R:0437:Enemy0
+R:0438:Enemy1:$06 = Medusa\n$08 = Knight\n
+R:0439:Enemy2
+R:043A:Enemy3
+R:043B:Enemy4
+R:043C:Enemy5
+R:043D:Enemy6
+R:043E:Enemy7
+R:043F:Enemy8
+R:0440:Enemy9
+R:0442:CandleTableIteams
+R:0445:SpecialIteamMaybe
+R:0450:DirectionSimonFaces:$00 = right, $01 = left
+R:0491:ProjectileAnimation:In a similar area than Candle Animation Timers. Appears 
+R:0494:TimersOfProjectiles:to activate around projectile-firing enemies.
+R:0496:CandleAnimationTimer0:Count down from $08 to $00. When Item is out, from $0F to \n$00 except when item is static, in which case it stays $80. Freezes when item is picked up.
+R:0497:CandleAnimationTimer1
+R:0498:CandleAnimationTimer2
+R:0499:CandleAnimationTimer3
+R:049A:CandleAnimationTimer4
+R:049B:CandleAnimationTimers5
+R:04A0:SpecialItemAppearingYpos
+R:04A8:Enemy0FrameAnimation
+R:04A9:Enemy1FrameAnimation
+R:04AA:Enemy2FrameAnimation
+R:04AB:Enemy3FrameAnimation
+R:04AC:Enemy4FrameAnimation
+R:04AD:Enemy5FrameAnimation
+R:04AE:Enemy6FrameAnimation
+R:04AF:Enemy7FrameAnimation
+R:04B2:CandleSpriteAssembly0:Oscillates from $01 to $02
+R:04B3:CandleSpriteAssembly1
+R:04B4:CandleSpriteAssembly2
+R:04B5:CandleSpriteAssembly3
+R:04B6:CandleSpriteAssembly4
+R:04B7:CandleSpriteAssembly5
+R:04CE:CandleTableForAssemblyValue
+R:04D0:CandleAssembly0:$27 = Candle\n$28 = FireStand\n$0E = Emty (used)
+R:0584:SimonsStateStanding:$00 = standing, \n$01 = going right, \n$02 = going left, \n$40 = Whiping\n$80 = Jumping
+R:07FC:Points0000XX
+R:07FD:Points00XX00
+R:07FE:PointsXX0000
+G:2000:PpuControl_2000:7  bit  0\n---- ----\nVPHB SINN\n|||| ||||\n|||| ||++- Base nametable address\n|||| ||    (0 = $2000; 1 = $2400; 2 = $2800; 3 = $2C00)\n|||| |+--- VRAM address increment per CPU read/write of PPUDATA\n|||| |     (0: add 1, going across; 1: add 32, going down)\n|||| +---- Sprite pattern table address for 8x8 sprites\n||||       (0: $0000; 1: $1000; ignored in 8x16 mode)\n|||+------ Background pattern table address (0: $0000; 1: $1000)\n||+------- Sprite size (0: 8x8; 1: 8x16)\n|+-------- PPU master/slave select\n|          (0: read backdrop from EXT pins; 1: output color on EXT pins)\n+--------- Generate an NMI at the start of the\n           vertical blanking interval (0: off; 1: on)
+G:2001:PpuMask_2001:7  bit  0\n---- ----\nBGRs bMmG\n|||| ||||\n|||| |||+- Display type: (0: color, 1: grayscale)\n|||| ||+-- 1: Show background in leftmost 8 pixels of screen, 0: Hide\n|||| |+--- 1: Show sprites in leftmost 8 pixels of screen, 0: Hide\n|||| +---- 1: Show background\n|||+------ 1: Show sprites\n||+------- Emphasize red\n|+-------- Emphasize green\n+--------- Emphasize blue
+G:2002:PpuStatus_2002:7  bit  0\n---- ----\nVSO. ....\n|||| ||||\n|||+-++++- Least significant bits previously written into a PPU register\n|||        (due to register not being updated for this address)\n||+------- Sprite overflow. The intent was for this flag to be set\n||         whenever more than eight sprites appear on a scanline, but a\n||         hardware bug causes the actual behavior to be more complicated\n||         and generate false positives as well as false negatives; see\n||         PPU sprite evaluation. This flag is set during sprite\n||         evaluation and cleared at dot 1 (the second dot) of the\n||         pre-render line.\n|+-------- Sprite 0 Hit.  Set when a nonzero pixel of sprite 0 overlaps\n|          a nonzero background pixel; cleared at dot 1 of the pre-render\n|          line.  Used for raster timing.\n+--------- Vertical blank has started (0: not in vblank; 1: in vblank).\n           Set at dot 1 of line 241 (the line *after* the post-render\n           line, false); cleared after reading $2002 and at dot 1 of the\n           pre-render line.
+G:2003:OamAddr_2003:Set OAM address - Write only
+G:2004:OamData_2004:Read/Write OAM data
+G:2005:PpuScroll_2005:Set PPU scroll, write twice - Write only
+G:2006:PpuAddr_2006:Set PPU address, write twice - Write only
+G:2007:PpuData_2007:Read/Write VRAM
+G:4000:Sq0Duty_4000:DDLC VVVV\nDuty (D), envelope loop / length counter halt (L), constant volume (C), volume/envelope (V)
+G:4001:Sq0Sweep_4001:EPPP NSSS\nSweep unit: enabled (E), period (P), negate (N), shift (S)
+G:4002:Sq0Timer_4002:TTTT TTTT\nTimer low (T)
+G:4003:Sq0Length_4003:LLLL LTTT\nLength counter load (L), timer high (T)
+G:4004:Sq1Duty_4004:DDLC VVVV\nDuty (D), envelope loop / length counter halt (L), constant volume (C), volume/envelope (V)
+G:4005:Sq1Sweep_4005:EPPP NSSS\nSweep unit: enabled (E), period (P), negate (N), shift (S)
+G:4006:Sq1Timer_4006:TTTT TTTT\nTimer low (T)
+G:4007:Sq1Length_4007:LLLL LTTT\nLength counter load (L), timer high (T)
+G:4008:TrgLinear_4008:CRRR RRRR\nLength counter halt / linear counter control (C), linear counter load (R)
+G:400A:TrgTimer_400A:TTTT TTTT\nTimer low (T)
+G:400B:TrgLength_400B:LLLL LTTT\nLength counter load (L), timer high (T)
+G:400C:NoiseVolume_400C:--LC VVVV\nEnvelope loop / length counter halt (L), constant volume (C), volume/envelope (V)
+G:400E:NoisePeriod_400E:L--- PPPP\nLoop noise (L), noise period (P)
+G:400F:NoiseLength_400F:LLLL L---\nLength counter load (L)
+G:4010:DmcFreq_4010:IL-- RRRR\nIRQ enable (I), loop (L), frequency (R)
+G:4011:DmcCounter_4011:-DDD DDDD\nLoad counter (D)
+G:4012:DmcAddress_4012:AAAA AAAA\nSample address (A)
+G:4013:DmcLength_4013:LLLL LLLL\nSample length (L)
+G:4014:SpriteDma_4014:Writing $XX will upload 256 bytes of data from CPU page $XX00-$XXFF to the internal PPU OAM.
+G:4015:ApuStatus_4015:Read:\nIF-D NT21\nDMC interrupt (I), frame interrupt (F), DMC active (D), length counter > 0 (N/T/2/1)\n\nWrite:\n---D NT21\nEnable DMC (D), noise (N), triangle (T), and pulse channels (2/1)
+G:4016:Ctrl1_4016:Read (NES - input):\n---4 3210\nRead data from controller port #1.\n\nWrite:\n---- ---A\nOutput data (strobe) to both controllers.
+G:4017:Ctrl2_FrameCtr_4017:Read (NES - input):\n---4 3210\nRead data from controller port #2.\n\nWrite (Frame counter): MI-- ----\nMode (M, 0 = 4-step, 1 = 5-step), IRQ inhibit flag (I)

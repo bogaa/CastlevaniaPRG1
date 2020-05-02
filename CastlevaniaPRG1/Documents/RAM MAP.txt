@@ -1,0 +1,110 @@
+RAM	Function	Details
+0x0004	RNG	Changes seemingly randomly.
+0x0007	Title Bat Current sprite	May be used by something else.
+0x0018	Mode	$01 = Title Screen
+$02 = Demo
+
+$04 = Intro Animation
+
+$05 = Playing
+
+$06 = Dead
+
+$08 = Door Animation
+
+$0A = Entering Castle Animation
+
+$0C = Crystal ball
+
+$0D = Game Over
+
+$0F = End Credits
+
+0x0019	Sub-mode	The values vary with mode.
+0x001A	Timer	Increments by 1 each frame. Resets each time you "change stage?"
+0x001E	Title Screen timer (time until demo mode)	Counts slowly (each 8 frames) up to $11 (until castle bat becomes close),
+then (each frame) down from $FF to $00.
+
+0x0022	Paused	$01 = yes, $00 = no
+0x0028	Current Stage	
+0x002A	Number of Lives	
+0x002B	Full Game Loops	$00 = Normal Mode (first game loop), $01 and above = Difficult Mode
+0x002E	Camera's X position	
+0x003E	Is Simon on stairs	$00 = yes, $01 = no
+0x003F	Simon's Y position (in level)	
+0x0040	Simon's X position (in level)	
+0x0042	1's and 10's place of Time in BCD	
+0x0043	100's and 1000's place of Time in BCD	
+0x0044	Life Meter (Graphic)	2 bars = +$08, Max = $40(64)
+0x0045	Life Meter (Actual)	2 bars = +$08, Max = $40(64)
+0x0046	Substage	Either $00 or $01 since each stage has at most 2 substages
+0x005F	Kneeling	$00 = standing, $01 = kneeling
+0x0064	Subweapon Shot	$00 = single shot, $01 = double shot, $02 = triple shot
+0x0070	Whip length	Set to $00, $01, or $02.
+0x0071	Number of Hearts	$00 to $63 (99 in decimal).
+0x008x	Pulse 1 channel	Values determining how the sound plays.
+0x009x	Pulse 2 channel	Ditto.
+0x00Ax	Triangle channel	'
+0x00Bx	Noise channel	'
+0x00F7	Player 1 Controller	Similar to Metroid's 0x0014.
+0x0159	Simon's current image
+(unknown use : dosen't seem to affect gameplay)
+
+$00=standing,
+$01-03 = walk,
+
+$04 = jump and crouch,
+
+$05-07 = whip/sub-weapon,
+
+$0D-0E = walk up stairs,
+
+$0F-10 = walk down stairs,
+
+$12 = hurt
+
+$1C = dead
+
+$1D = collapsing
+
+0x015B	Subweapon	$00 = no subweapon
+$08 = Dagger
+
+$09 = Boomerang
+
+$0B = Holy Water
+
+$0D = Axe
+
+$0F = Stopwatch
+
+0x0160	Simon's screen position (in room)	
+0x0162	Simon's screen position (in room)	not 0x0160.
+0x038C	Simon's X position (in screen)	
+0x0390	Enemy 1's X position (in screen)	
+0x0391	Enemy 2's X position (in screen)	
+0x0392	Enemy 3's X position (in screen)	
+0x0393	Boss 1?'s X position (in screen)	
+0x0395	Bat/Medusa Head 1's X position (in screen)	
+0x0396	Bat/Medusa Head 2's X position (in screen)	
+0x0397	Bat/Medusa Head 3/Drac's Top Fireball's X position (in screen)	
+0x0398	Bat/Medusa Head 4/Drac's Middle Fireball's X position (in screen)	
+0x0399	Bat/Medusa Head 5/Drac's Bottom Fireball's X position (in screen)	
+0x03A0	Sub-weapon 1's X position (in screen)	
+0x03A1	Sub-weapon 2's X position (in screen)	
+0x03A3	Platform 1's X position (in screen)	
+0x03A4	Platform 2's X position (in screen)	
+0x0450	Direction Simon looks	$00 = right, $01 = left
+0x0491-0494?	Projectile Animation Timers?	In a similar area than Candle Animation Timers. Appears to activate around projectile-firing enemies.
+0x0496-049B	Candle Animation Timers	Count down from $08 to $00. When Item is out, from $0F to $00 except when item is static, in which case it stays $80. Freezes when item is picked up.
+0x04B2	Candle 1's current image	Oscillates from $01 to $02.
+0x04B3	Candle 2's current image	Ditto
+0x04B4	Candle 3's current image	'
+0x04B5	Candle 4's current image	'
+0x04B6	Candle 5's current image	'
+0x04B7	Candle 6's current image	'
+0x0584	Simon's state	$00 = standing, $01 = going right, $02 = going left, etc.
+0x07FC	Ones/Tenths of points	In pseudo Decimal (Ex.: $08, $09, $10...)
+0x07FD	Hundreds/Thousands of points	Ditto.
+0x07FE	Ten Thousands/Hundred Thousands of points	'
+0x6000-7FFF	RNG 2	Strangely, these 8192 values are all equal to the same thing.

@@ -1,0 +1,487 @@
+CASTLEVANIA ENEMY DATA v 0.9
+
+by Optomon
+
+
+
+This is a text document that is intended to shed some light on how to modify the properties of enemies 
+in the NES game Castlevania.
+
+
+
+Table of Contents
+-------------------------------------------------------------
+
+I.   HEX VALUES CORRESPONDING TO SPRITES
+
+
+II.  GRAPHICAL DATA
+         
+      2A) Sprite animation
+      2B) Sprite composition
+
+III. BEHAVIORAL DATA
+
+      3A) Loading properties
+      3B) Actual Behavior
+      3C) Projectiles
+
+IV.  DATA FOR HITTING, KILLING AND GETTING HIT BY ENEMIES
+
+      4A) Hitting and killing enemies
+      4B) "Hit Space"
+      4C) How many points an enemy is worth
+
+
+	
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+I.  HEX VALUES CORRESPONDING TO SPRITES 
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+This list is important. These hex values correspond to particular sprites 
+throughout the rom. Attribute tables with stored information enemy by enemy 
+typically appear in this order:
+
+
+00= ??
+01= Zombie
+02= Bat
+03= Merman
+04= ??
+05= ??
+06= Medusa
+07= Hanging bat
+08= Knight
+09= Medusa snake
+0A= Axe Armor
+0B= Death's hatchet
+0C= Hunchback
+0D= Ghost
+0E= Pillar of bones
+0F= Raven
+10= Blue skeleton
+11= Dog
+12= Eagle
+13= Red skeleton
+14= Skeledragon head
+15= Skeledragon segment?
+16= Skeledragon segment?
+17= Holy water
+18= Grim reaper
+19= Phantom bat boss
+1A= Mummy
+1B= Medusa boss
+1C= Frankenstein’s Monster
+1D= Dracula body
+1E= Phantom bat enemy
+1F= Igor
+20= Triple fireball
+21= Fireball that follows player
+22= Mummy shot
+23= Straight fireball
+24= Skeleton bone
+25= ??
+26= ??
+27= Ax from Axe Armor
+
+
+Beyond 27, I don't know, I think it might be for items and candles and stuff. I think it goes on clear 
+up to hex 3C, but don't hold me to that.
+
+
+
+
+
+
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+II. GRAPHICAL DATA
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+This section covers the animation and tile assembly of sprites. If you want to assign
+an enemy to a different sprite, see section 3A (enemy loading properties).
+
+Also, if you want to edit the graphics themselves, then get graphics editing utility.
+
+
+------------------------------------------------
+2A) SPRITE ANIMATION
+------------------------------------------------
+
+0x1F24C : Data table for sprite animations. I have constructed a key for this data table, though I 
+wasn't able to identify every sprite. Each sprite in the table consists of 3 bytes:
+
+Byte 1 : how many frames of animation the sprite uses
+Byte 2 : The sprite frames to be used, referring to locations on the FCC-11AB pointer table
+Byte 3 : how fast the animation is
+
+00= zombie	      (01 20 10)
+01= star thing	      (00 66 10)
+02= red skeleton      (01 22 10)
+03= mummy shot	      (01 53 08)
+04= merman	      (01 37 18)
+05= whip (item)	      (00 6E 10)
+06= merman	      (00 39 80)
+07= ?    	      (70 10 00)
+08= fireball	      (00 43 08)
+09= candle 	      (03 33 10)
+0A= cross 	      (00 72 10)
+0B= medusa	      (01 45 0C)
+0C= whip (item)	      (01 6F 10)
+0D= ?    	      (00 70 10)
+0E= moneybag 	      (00 49 10)
+0F= heart	      (00 4A 10)
+10= meat chop	      (00 4B 10)
+11= axe (shot)	      (01 4C 08)
+12= ?		      (01 73 08)
+13= raven	      (03 3F 08)
+14= raven             (00 48 80)
+15= axe armor	      (01 85 10)
+16= armor's axe	      (03 4C 03)
+17= dagger	      (00 50 80)
+18= axe (item)	      (00 4C 80)
+19= ghost	      (01 64 08)
+1A= mummy	      (00 6B 10)
+1B= mummy	      (03 67 10)
+1C= mummy	      (01 6B 10)
+1D= snake	      (01 75 08)
+1E= jumping dog	      (00 B8 80)
+1F= medusa boss	      (01 78 08)
+20= 9 boss flameS     (02 7F 08)
+21= ?		      (00 77 08)
+22= ?		      (03 25 0C)
+23= invisible!	      (00 00 10)
+24= frankenstein      (00 67 80)
+25= frankenstein      (03 8F 18)
+26= enemy flame	      (02 2E 08)
+27= candle	      (01 31 08)
+28= candle stand      (01 55 08)
+29= Dracula	      (00 D0 80)
+2A= Dracula	      (00 D1 80)
+2B= Draclua	      (00 D2 80)
+2C= ?		      (00 BE 80)
+2D= ?		      (00 CE 80)
+2E= ?		      (00 CF 80)
+2F= double shot	      (00 51 80)
+30= triple shot       (00 52 80)
+31= 2nd dracula	form  (00 24 80)
+32= 2nd dracula	form  (00 D5 80)
+33= 2nd dracula	form  (00 6D 80)
+34= 2nd dracula	form  (00 7A 80)
+35= 2nd dracula	form  (00 7B 80)
+36= 2nd dracula	form  (01 D3 20)
+37= dracula chunk     (00 57 80)
+38= bat		      (03 44 08)
+39= hanging bat	      (03 44 08)
+3A= sleeping bat      (00 7E 80)
+3B= hunchback	      (03 88 08)
+3C= hunchback         (00 82 80)
+3D= hunchback         (00 83 80)
+3E= hunchback         (00 84 80)
+3F= 6 boss flames     (02 8C 08)
+40= holy water (shot) (00 25 80)       
+41= boomerang (shot)  (02 27 03)
+42= 5 heart           (00 26 80)
+43= boomerang (item)  (00 28 80)
+44= holy water (item) (00 2B 80)
+45= potion            (00 2C 80)
+46= clock             (00 2D 80)
+47= knight            (03 9A 10)
+48= ?                 (00 9E 80)
+49= sleeping bat boss (00 9F 80)
+4A= phantom bat       (01 A0 08)
+4B= magic ball        (01 A2 01)
+4C= holy water flame  (04 5A 08) 
+4D= ?                 (01 82 08)
+4E= skeleton	      (01 B1 10)
+4F= skeleton bone     (02 B3 08)
+50= splash from water (00 3D 80)
+51= sitting dog       (00 B6 80)
+52= running dog       (02 B7 06)
+53= eagle             (01 3A 10)    
+54= hatchet           (01 BE 18)
+55= ?                 (00 00 00)
+56= hatchet           (01 BA 18)
+57= hatchet           (00 BE 80)
+58= grim reaper       (01 C2 80)
+59= ?                 (00 CD 80)
+
+
+------------------------------------------------
+2B) SPRITE COMPOSITION
+------------------------------------------------
+
+Here you will learn to redefine the graphical composition of individual sprites and assign them 
+different palette combinations.
+
+
+0xFCC-0x11AB : This is a massive pointer table defining the graphical composition of each individual 
+sprite frame. Each pointer points to a location in the 0000-3FFF data block in which a string of code 
+with special intructions about the sprite's composition.
+
+Let's use an example, let's say, oh, our best friend the zombie. It will be the 20th pointer on the 
+table (as denoted by "byte 2" in the zombie section of the 0x1F24C data table). So find whatever the 
+20th pointer is (add hex 40 to 0xFCC, which is 0x100C). The pointer is B6 92, or 0x12C6. It will point 
+to sprite composition data for the zombie's first frame of animation. Keep in mind that the zombie's 
+sprite is arranged in this manner, where X is an 8x8 pixel block:
+
+X X
+X X
+X X
+X X
+
+The first byte we will see is "04". This number refers to the number of 8 x 16 pixel blocks that 
+the sprite frame is composed of, which is 4 (and by 8 x 16, I mean 8 pixels wide and 16 pixels tall). 
+Following the "04" we see a string of bytes which ascribes itself to a very distinct format:
+
+E0 82 41 F8
+
+These are instructions for the zombie's top left 8 x 16 pixel block
+
+The 1st byte: Indicates the vertical position of the pixel block on the enemy, which in this case is 
+	      E0. The first nybble is the block's vertical position, which is "E" which means top. "0"
+	      would mean bottom, and "F" means center (this is for 16 x 16 pixel sprites, such as the 
+	      bat).
+The 2nd byte: This is the graphical tile to be displayed. A good way of knowing which tile this is 
+	      is to open the rom in a graphics editing utility (if you don't have one, get one!) to
+	      the area where the zombie is. Orient the graphics page where zombie is to the point
+	      until you see an 8x16 colored in pixel box in the bottom right corner. The utility
+	      denote the hex value of the box the zombie is at. The byte is 82. If you oriented the 
+	      display in the Graphics editing utility correctly you should see that box 82 is that 
+	      which contains the zombies upper right claw. box 83 is also included along with 82, 
+	      which completes an 8x16 pixel box.
+The 3rd byte: The first nybble is the orientation of the sprite from its original graphical appearance
+	      in the rom, which can viewed in your graphics editor. "0" means no inversion, "4" means
+	      reversed (which it is in this case), "8" means upside down, "C" means upside down and 
+	      reversed. The second nybble is the palette combination to be assigned for the sprite. "0"
+	      would be Simon's palette, 1 is the purplish blue palette (the case here), 2 is the white 
+	      yellowish blue one (like medusa heads), and 3 is the red one (like hearts, candles).
+The 4th byte: Indicates the 8x16 pixel block's location from the center of the sprite. Here it is F8, 
+	      which is to the left of the center. But recall that the sprite has been reversed from
+	      its original appearance, so its actually going to appear on the right. (confusing, huh)
+
+
+The next 3 bytes in this sequence are:
+
+E1 80 00
+
+This is for the next 8x16 block in the sprite frame, but this string lacks the byte that denotes the
+sprite palette combination/inversion byte. This goes for the remainder of the 8x16 blocks in the 
+sprite frame.
+
+And so is the format for pretty much every sprite in Castlevania. Well, maybe not the bat on the title 
+screen, but who cares, it's not an enemy anyway.
+
+
+
+
+
+
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+III. BEHAVIORAL DATA
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+There are two pointer tables for sprite behavior. One is for how sprites are loaded on screen,
+and one for the sprites' actual behavior.
+
+By loading properties I mean the conditions and manners an enemy will appear on the screen, such
+as where they will appear realtive to Simon, how many of them will appear, and what sprite will  
+it will use. By sprite behavior, these are the manners in which a sprite will move about the screen 
+and what projectiles it will shoot.
+
+The enemy behavior composed almost entirely of 6502 asm code, which you should have a decent 
+understanding of before you start hacking away. Well, I guess you could learn a thing or two 
+by corrupting the code. Just keep in mind that in programming the code is always right, and if it 
+happens first in the code, then it happens first in the game.
+
+As a tip, here are some significant asm opcodes to keep an eye out for:
+
+A9 XX    : The always delicious LDA immediate. Modify whatever XX is and you will likely see
+           an obvious and distinct change.
+A0 XX    : LDX immediate, these are somewhat less delicious and changes are typically more subtle.
+C9 XX    : CMP immediate, this means when a certain value reaches XX, then whatever is defined 
+           by the following code happens.
+C0 XX    : CPX immdeiate, like CMP, but usually not as delicious.
+AD XX XX : LDA absolute, A ram address is being summoned to have its parameters changed, mwa ha ha!
+A5 XX    : LDA zero page, just like LDA absolute, but calling up ram addresses less than $100.
+4C XX XX : JMP (jump), code jumps off and continues to another rom location defined by XX XX.
+20 XX XX : JSR (jump sub routine), extremely delicious and all over the place. Like JMP, but the code
+           goes off somewhere and comes back to the spot just after 20 XX XX!
+60       : RTS (return sub routine). This means the code ends, or returns back to a different 
+           location.
+F0 XX    : BEQ. This is a branch, very important and very frequent. XX is a spot in the code, telling 
+           how far ahead or how far back the code to be branched is. The branched code won't function  
+	   unless the conditions preceding it are met. In the case of a BEQ (Branch on result equal), 
+           the routines defined by the branched code will not happen unless the value being 
+	   questioned in the preceding code is equal to whatever value its being compared to. 
+D0 XX    : BNE, like BEQ, but the condition is the opposite: the code will be branched if the value 
+	   in question is not equal to whatever its being compared to . There are other branches to 
+           (like 10 XX, 30 XX, 90 XX, B0 XX) but they are considerably less frequent.
+
+
+------------------------------------------------
+3A) LOADING PROPERTIES
+------------------------------------------------
+
+Pointer table for sprites' loading properties begins at 0x1F3ED.
+
+It is important to note that pointer values 8000-BFFF refer to the 14000-17FFF section, and values 
+C000-FFFF refer to the 1C000-1FFFF section.
+
+Let's use the zombie as an example (again). Remember that the zombie's sprite number is 01, so it 
+will be the second pointer in the table. This pointer should read "5D 80", referring to location 1806D.
+
+To save you time, the block of zombie loading data runs from 1806D-180F2. In here, you'll find code 
+to alter the zombie's loading behavior. One such example is at 0x180D3, which says "A9 10". This 
+defines how many zombies will be on the screen at one point. The lower the value of the byte, the
+more zombies that will come on the screen at once.
+
+Typically at the end of each block of enemy loading data there will be two LDA immediates ("A9 XX").
+One is is for the sprite, the second is for the behavior. For example, the zombie has an "A9 01" at 
+0x180E3 for its behavior (the hex value ascribed for zombie is 01) followed shortly after by an A9 00 
+for the sprite value (the hex value for the zombie's sprite is 00; change this to 38 to give it the 
+bat's sprite!).
+
+------------------------------------------------
+3B) ACTUAL BEHAVIOR
+------------------------------------------------
+
+Pointer table for each sprites' behavior begins at 0x1E96C.
+
+This time pointer values 8000-BFFF refer to the 18000-1BFFF section, and values C000-FFFF again 
+refer to the 1C000-1FFFF section.
+
+Let's again use the zombie as an example. Looking at the pointer table, knowing the zombie is the 
+second pointer, we see the pointer "08 80", referring to location 14018. There will be some asm code 
+there that defines the behaviour of all zombies that appear in the game.
+
+Now to corrupt the code! Let's say you want to change around the zombie. The first thing you see is
+
+BD 6C 04
+D0 25
+
+Let's swap that DO with an FO. Oops, the zombies are falling through the floor! Well at least we know
+that this is the right spot, haha.
+
+Some routines that appear frequently in enemy behavior:
+
+A5 14: This is loading the ram value for when something touches the ground. Changing the value from 
+14 to 04, F5, or F7 (ram values that are related to controller buttons pressed) might bring some 
+interesting consequences. You could define your own routines based on button pressing if you knew 
+how and wanted to.
+
+20 50 EC: this I believe is the routine called for when an enemy falls off a platform (or through
+the floor, depending how you apply it).
+
+20 9C EF: I believe this is the routine that makes an enemy land on a platform (so it doesn't fall 
+through).
+
+20 7C EF: Probably a routine for when an enemy is turning in to the other direction. I might be 
+confusing it with "20 84 EF" though, which is also frequent.
+
+20 69 EF: Routine called on for an enemy to relentlessly chase the player, this one can be fun! Just 
+find a way to slip into the code properly.
+
+20 6D CA: Not exactly sure what it does but it always precedes a pointer table. In the case of 
+enemy behavior data, it usually occurs near the start of the code. The pointers in the following 
+table point to enemy behavioral routines that occur sequentially. In other words, the enemy will 
+perform the behavior defined by the first pointer first, then the second one second, etc.
+
+
+------------------------------------------------
+3C) PROJECTILES
+------------------------------------------------
+
+Routines for an enemy to shoot certain types of projectiles can be called up at any point in the 
+enemies behavior code. This is a list of pointers that call up routines for shooting projectiles.
+To make an enemy fire a projectile, simply slip a 20 XX XX at some point in the line of the enemiy's 
+behavior code, where XX XX in this case is among the following pointers:
+
+2C 87 : Fireball that travels straight
+88 EC : Fireball that follows the player
+C5 99 : Triple fireballs
+F7 85 : Mummy shot
+86 8D : Ax from Axe Armor
+4F 87 : Skeleton bone
+80 8E : Also a skeleton bone
+
+Now, for the projectiles themselves, just remember, they can be found on the sprite behavior pointer 
+tables too (they'll be the 20th-27th pointers in the tables). You can modify several parameters of 
+the projectiles behaviors at their given locations.
+
+
+
+
+
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+IV. DATA FOR HITTING, KILLING AND GETTING HIT BY ENEMIES
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+Just some attributes of enemies that are very significant.
+
+
+------------------------------------------------
+4A) HITTING AND KILLING ENEMIES
+------------------------------------------------
+
+Data that denotes what happens when you hit an enemy (e.g. Simon whipping it or hitting it with a 
+weapon) is stored on a pointer table at 1E589-1E5E8. These pointers each point to strings of 
+asm code that define many attributes for each enemy when hit, such as how many hits it takes, will 
+a sound effect occur when you hit it, will a giant white monster explode out of it if you tear off 
+its head, etc.
+
+The pointer 97 E0 is very prevalent. This is the routine for when you hit an enemy and it dies, e.g.
+turns into a little red flame. 
+
+The number of hits an enemy takes is usually defined by an "A9 XX" or "C9 XX" depending on how it is
+applied. one hit with an upgraded hit is 20, so an enemy that takes 6 hits would probably have some 
+code that reads "A9 C0" or "C9 C0" in it somewhere.
+
+
+------------------------------------------------
+4B) "HIT SPACE"
+------------------------------------------------
+
+Just because Simon's sprite makes contact with an enemy sprite doesn't have to mean he will get hurt
+by it. They are not the same. There is a table for the amount of "hit space" an enemy will take up, 
+that is, the space of which an enemy can hit you with and, conversely, how much Simon can hit it. 
+This table is at 1E47A-1E4DB. Each enemy gets 2 bytes. The first byte is how much space it takes up 
+horizontally, the second byte is the space it takes up vertically.
+
+------------------------------------------------
+4C) HOW MANY POINTS AN ENEMY IS WORTH
+------------------------------------------------
+
+If you care to edit how many points an enemy is worth when you kill it for some reason, then there 
+is a table for this too. It is located at 1DF3A-1DF61. The byte values correspond to a set value 
+that an enemy will be worth when you kill it. These values are defined just after this table at 
+1DF62-1DF88.
+
+Value 00 on the table for example means 100 points. So go to 1DF62 and we see the bytes "00 01 00". 
+This means 100 points. The max an enemy can be worth is 999999 points, as there is only enough 
+support for 6 digits. Change "00 01 00" to "10 00 00". Now enemies that were worth 100 points are 
+worth a 100000 points!
+
+*****************************************************************************************************
+
+GOOD LUCK!
+

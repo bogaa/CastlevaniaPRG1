@@ -1,0 +1,70 @@
+Bank0 PRG
+	$0000
+	$b500 Sprites for TitleScreen
+
+Bank1 CHR 
+	
+	TitleScreen
+	SimonSprite
+	Fonts
+	Ending
+
+Bank2 CHR
+	
+	Stage2
+	Stage3
+
+Bank3 CHR
+
+	Stage4
+	Stage5
+	Dracula
+	Map
+	Fonts
+	
+Bank4 PRG
+Bank5
+Bank6
+Bank7 
+Bank8
+
+
+
+Example Mapping MMC1 UNROM:
+---------------------------------------------------------
+CPU Bus                                    PRG ROM
+---------------------------------------------------------
+$0000-$0800        	2KB internal RAM
+$0800-$1fff        	Mirrors of RAM
+$2000-$2007        	Mirrors PPU Register
+$     -$3fff        Repeat every 8 bytes    
+$4000-$4017        	NES APU Register and Controller ($4016-$4017)
+$4018-$401F        	APU Function (disabled)
+$     -$5fff        deverse PRG RAM/ROM MapperRegister
+$6000-$7fff       	SRAM
+$8000-$bfff        	Most mappers start there PRG banks here.
+					Only one Bank at a Time!
+   ||||||||
+   |00---------------------------------- $0000
+   |||||||
+   |01---------------------------------- $4000
+   ||||||
+   |02---------------------------------- $8000   
+   |||||
+   |03---------------------------------- $c000
+   ||||
+   |04--------------------------------- $10000
+   |||
+   |05--------------------------------- $14000
+   ||
+   |06--------------------------------- $18000
+   |
+$c000-ffff                               $1c000 (Always at the end of the CPU bus!)
+   |
+   |The CPU expects interrupt vectors in a fixed place at the end of the cartridge space.
+   |
+   |$FFFA-$FFFB = NMI vector
+   |$FFFC-$FFFD = Reset vector
+   |$FFFE-$FFFF = IRQ/BRK vector 
+   |
+   |----------------------------------- $1ffff

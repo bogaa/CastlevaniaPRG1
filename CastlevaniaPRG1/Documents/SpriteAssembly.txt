@@ -1,0 +1,20 @@
+Bosses
+							1				2			3			4			NextBlock??
+Object Assembly Format:	08 	F0 D0 03 E8		F1 D2 F0	F1 D4 F8 	11 D6 F8 	F0D44300F1D208F1D01011D600
+						AA 	BC DD EF GG		BC DD GG	BC DD GG 	BC DD GG		
+				
+AA=	Number of 1x2 SpriteBlocks used for the Frame
+B= 	Ypos	8 pixel
+C= 	Ypos pixel and uneven number will mirror and break palette. Also it will alternate to the next SpriteBlock
+DD=	CHR Slot Number (Only Even Numbers Work Spite) 
+E= 	O+1=Normal 4+5=Mirror 8+9=Flip c+d=MirrorFlip (For Block "4 Times 1x2")
+F=	Palette 0-3 Then it will repeat cycling Palettes
+GG= Xpos
+
+
+
+
+
+
+
+

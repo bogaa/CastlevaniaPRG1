@@ -1,0 +1,139 @@
+
+;-------------------------------------------------------------------------------
+; Bosses
+;-------------------------------------------------------------------------------
+
+
+162e Bat Boss
+
+MedusaBoss Position x y 1d8d1 2byte
+
+== Quean Medusa ==
+
+Animation			Fr As Sp
+1f2a5 EnterFrame 	01 78 10
+1f299 Medusa 		01 78 08
+
+
+ObjAssemblyPointer
+
+10ae Frame1 EB96  
+10b0 Frame2 0697 
+
+
+16eb Frame1 08E0D802F0E1DAF801DCF001DEF8E0DA4200E1D80801DE0001DC08
+1706 Frame2 08E0D001F0E1D2F801D4F001D6F8E0D24100E1D00801D60001D408
+
+
+18429 Invisible Frame Trigger 
+
+Snake
+
+10a8 Frame1 C096
+10aa Frame2 C896
+
+
+16c0 Frame1 02ECF042F8EDF200
+16c8 Frame2 02ECF642F8EDF400
+
+FreeSpace 3b00 (3d44 With BloodyTears) 02EC9A42F8ED980002EC9242F8ED9000
+
+
+Note:
+1d8c0 BossID (5b=Medusa 1A=Mummy) (Need to check location I don't think it is a level event.. not sure)
+1d8c1 MedusaSpawn Xpos
+1d8c2 MeduasSpawn Ypos
+
+1e47c Snake Hitbox 		0603
+1e4a0 Medusa Hitbox		0e0e
+
+
+142f4 Medusa Vertical Speed 00 
+
+14381 What type of enemy Medusa drops
+14385 What sprite it will use
+14364 Timer till Medusa Spawns Enemy
+
+14356 Routine tree for movement and shooting
+1435b eaeaea Remove Vertical Movement (do not use when stoping whole movement or it will move 1px up)
+1435e eaeaea Remove Horizontal Movement (Vertical Momvment too)
+
+
+
+
+
+14304 eaeaea ypos sbc and Pattern
+1435b eaeaea Ypos adc and pattern
+
+Snake
+143be Speed
+143e9 Movement delay
+
+
+
+;-------------------------------------------------------------------------------
+; Enemy
+;-------------------------------------------------------------------------------
+
+
+
+
+Global Routines used!!
+
+1ef30 Stop Vertical Movement 60FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 			Pointer 30ef
+1ef43 Stop Vertical Movement 60FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF				Pointer 43ef
+
+
+1ee22 Stop Horizontal Left Movement 60FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		Pointer 22ee
+1ee35 Stob Horizontal Right Movement 60FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		Pointer 35ee
+
+
+
+1e56d SoundWhenEnemyHit 20 CCE4
+1e50a hit detection 60
+1e1af Enemy two health? 205DE1?? 
+1e1ac					20abe1
+
+1e1ab A940 > A960 Kight more health
+
+1e579 EnemyHealthRoutineTable
+
+97E0 Zombie, Panter (wolf), bat, dive bat, Fishman, Medusa, Snake, HunchBack, hawk, Skeleton, bone, shots, bird, axe, bandage, syphe
+3FE3 Draculas Head + SecondForm
+ABE1 SpearKnight
+1BE3
+08E2 AxeKnight
+A7E1 Ghost
+8DE1 BonePiller
+F3E1 Red Skeleton 
+6AE1 BoneDragon
+32E3 BoneDragon Neck
+76E2 QueenMedusa, Death
+79E2 PhantomBat Boss
+CCE2 Mummys
+14E3 FrankenStein
+1BE3 Draculas Body + SeconForm
+A3E1 PhantomBat (bridge)
+95E3 Igor
+D7E3 Candle
+D6E3
+
+1e49c 140a PhantomBat
+
+
+1ef56 FallMovement 		BD7003FDE0039D7003BD5403FDC4039D540360					Pointer 57ef
+						60FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFff
+
+
+
+
+
+
+
+== Enemys ==
+
+Zombie
+
+180cd Speed 00 
+
+
